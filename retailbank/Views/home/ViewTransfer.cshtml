@@ -1,0 +1,103 @@
+﻿@model retailbank.Models.castleaccount33
+
+@{
+    ViewBag.Title = "ViewTransfer";
+    Layout = "~/Views/Shared/cust_layout.cshtml";
+}
+
+<h2>ViewTransfer</h2>
+@Html.Raw(TempData["sm"])
+@Html.Raw(TempData["sc"])
+@Html.Raw(TempData["f1"])
+<div style="background-color:cornflowerblue">
+
+    @*@if (@TempData["sc"] != null)
+    {
+        @TempData["sc"]
+    }
+    @if (@TempData["fl"] != null)
+    {
+        @TempData["fl"]
+    }
+    @if (@TempData["sm"] != null)
+    {
+        @TempData["sm"]
+    }*@
+    @if (@TempData["lfl"] != null)
+    {
+        @TempData["lfl"]
+    }
+   
+</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Source Account Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.accid1, new { htmlAttributes = new { @class = "form-control" } })*@
+               @ViewBag.src
+                 @Html.ValidationMessageFor(model => model.accid1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Old Balance", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @ViewBag.oldbs
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("New Balance", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @ViewBag.newbs
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.Label("Target Account Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.accid2, new { htmlAttributes = new { @class = "form-control" } })*@
+                @ViewBag.tgt
+                @Html.ValidationMessageFor(model => model.accid2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Old Balance", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @ViewBag.oldbt
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("New Balance", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @ViewBag.newbt
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+       
+
+      
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

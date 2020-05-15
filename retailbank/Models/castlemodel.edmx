@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB03TMS24_1819Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="castleaccount33">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="AccountType" Type="varchar" MaxLength="20" />
+          <Property Name="lastupdated" Type="datetime" />
+          <Property Name="ShowMessage" Type="varchar" MaxLength="50" />
+          <Property Name="AccountStatus" Type="varchar" MaxLength="20" />
+          <Property Name="Balance" Type="int" />
+        </EntityType>
+        <EntityType Name="Custdet_1288">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="custSsnId" Type="bigint" />
+          <Property Name="custName" Type="varchar" MaxLength="20" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address1" Type="varchar" MaxLength="20" />
+          <Property Name="Address2" Type="varchar" MaxLength="20" />
+          <Property Name="city" Type="varchar" MaxLength="20" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+          <Property Name="lastupdated" Type="datetime" />
+          <Property Name="DisplayMessage" Type="varchar" MaxLength="50" />
+          <Property Name="AccountStatus" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="logincastle_3">
+          <Key>
+            <PropertyRef Name="loginid" />
+          </Key>
+          <Property Name="loginid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="transaction33">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransAccountId" Type="int" />
+          <Property Name="TransDescription" Type="varchar" MaxLength="50" />
+          <Property Name="Transdate" Type="datetime" />
+          <Property Name="TransAmount" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__castleacc__Custo__47DBAE45">
+          <End Role="Custdet_1288" Type="Self.Custdet_1288" Multiplicity="0..1" />
+          <End Role="castleaccount33" Type="Self.castleaccount33" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custdet_1288">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="castleaccount33">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__Trans__534D60F1">
+          <End Role="castleaccount33" Type="Self.castleaccount33" Multiplicity="0..1" />
+          <End Role="transaction33" Type="Self.transaction33" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="castleaccount33">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="transaction33">
+              <PropertyRef Name="TransAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="addaccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerId" Type="int" Mode="In" />
+          <Parameter Name="AccountType" Type="varchar" Mode="In" />
+          <Parameter Name="DepositAmmount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="addaccount33" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerId" Type="int" Mode="In" />
+          <Parameter Name="AccountType" Type="varchar" Mode="In" />
+          <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+          <Parameter Name="AccountStatus" Type="varchar" Mode="In" />
+          <Parameter Name="Balance" Type="int" Mode="In" />
+          <Parameter Name="flagg" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="delete_castle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="custid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteaccount33" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+          <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+          <Parameter Name="depositamount" Type="int" Mode="In" />
+          <Parameter Name="TransactionId" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Custdet_1288" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="custid" Type="int" Mode="InOut" />
+          <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+          <Parameter Name="custName" Type="varchar" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+          <Parameter Name="DisplayMessage" Type="varchar" Mode="In" />
+          <Parameter Name="AccountStatus" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="transfermoney" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accid1" Type="int" Mode="In" />
+          <Parameter Name="accid2" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="int" Mode="In" />
+          <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+          <Parameter Name="transid" Type="int" Mode="InOut" />
+          <Parameter Name="flag" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="update_customer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="custid" Type="int" Mode="InOut" />
+          <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+          <Parameter Name="custName" Type="varchar" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="updatecastle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="custid" Type="int" Mode="InOut" />
+          <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+          <Parameter Name="custName" Type="varchar" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="withdrawl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+          <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+          <Parameter Name="withdrawlamount" Type="int" Mode="In" />
+          <Parameter Name="flag" Type="int" Mode="InOut" />
+          <Parameter Name="TransactionId" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="DB03TMS24_1819ModelStoreContainer">
+          <EntitySet Name="castleaccount33" EntityType="Self.castleaccount33" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custdet_1288" EntityType="Self.Custdet_1288" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="logincastle_3" EntityType="Self.logincastle_3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transaction33" EntityType="Self.transaction33" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__castleacc__Custo__47DBAE45" Association="Self.FK__castleacc__Custo__47DBAE45">
+            <End Role="Custdet_1288" EntitySet="Custdet_1288" />
+            <End Role="castleaccount33" EntitySet="castleaccount33" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__Trans__534D60F1" Association="Self.FK__transacti__Trans__534D60F1">
+            <End Role="castleaccount33" EntitySet="castleaccount33" />
+            <End Role="transaction33" EntitySet="transaction33" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB03TMS24_1819Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="logincastle_3">
+          <Key>
+            <PropertyRef Name="loginid" />
+          </Key>
+          <Property Name="loginid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DB03TMS24_1819Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="logincastle_3" EntityType="Self.logincastle_3" />
+          <FunctionImport Name="sp_Custdet_1288">
+            <Parameter Name="custid" Mode="InOut" Type="Int32" />
+            <Parameter Name="custSsnId" Mode="In" Type="Int64" />
+            <Parameter Name="custName" Mode="In" Type="String" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="DisplayMessage" Mode="In" Type="String" />
+            <Parameter Name="AccountStatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updatecastle">
+            <Parameter Name="custid" Mode="InOut" Type="Int32" />
+            <Parameter Name="custSsnId" Mode="In" Type="Int64" />
+            <Parameter Name="custName" Mode="In" Type="String" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_customer">
+            <Parameter Name="custid" Mode="InOut" Type="Int32" />
+            <Parameter Name="custSsnId" Mode="In" Type="Int64" />
+            <Parameter Name="custName" Mode="In" Type="String" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="delete_castle">
+          <Parameter Name="custid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addaccount">
+            <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+            <Parameter Name="AccountType" Mode="In" Type="String" />
+            <Parameter Name="DepositAmmount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="castleaccount33" EntityType="DB03TMS24_1819Model.castleaccount33" />
+          <FunctionImport Name="addaccount33">
+            <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+            <Parameter Name="AccountType" Mode="In" Type="String" />
+            <Parameter Name="ShowMessage" Mode="In" Type="String" />
+            <Parameter Name="AccountStatus" Mode="In" Type="String" />
+            <Parameter Name="Balance" Mode="In" Type="Int32" />
+            <Parameter Name="flagg" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteaccount33">
+          <Parameter Name="AccountId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Custdet_1288" EntityType="DB03TMS24_1819Model.Custdet_1288" />
+          <AssociationSet Name="FK__castleacc__Custo__47DBAE45" Association="DB03TMS24_1819Model.FK__castleacc__Custo__47DBAE45">
+            <End Role="Custdet_1288" EntitySet="Custdet_1288" />
+            <End Role="castleaccount33" EntitySet="castleaccount33" />
+          </AssociationSet>
+          <FunctionImport Name="deposit">
+            <Parameter Name="AccountId" Mode="In" Type="Int32" />
+            <Parameter Name="ShowMessage" Mode="In" Type="String" />
+            <Parameter Name="depositamount" Mode="In" Type="Int32" />
+            <Parameter Name="TransactionId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="withdrawl">
+            <Parameter Name="AccountId" Mode="In" Type="Int32" />
+            <Parameter Name="ShowMessage" Mode="In" Type="String" />
+            <Parameter Name="withdrawlamount" Mode="In" Type="Int32" />
+            <Parameter Name="flag" Mode="InOut" Type="Int32" />
+            <Parameter Name="TransactionId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="transaction33" EntityType="DB03TMS24_1819Model.transaction33" />
+          <AssociationSet Name="FK__transacti__Trans__534D60F1" Association="DB03TMS24_1819Model.FK__transacti__Trans__534D60F1">
+            <End Role="castleaccount33" EntitySet="castleaccount33" />
+            <End Role="transaction33" EntitySet="transaction33" />
+          </AssociationSet>
+          <FunctionImport Name="transfermoney">
+            <Parameter Name="accid1" Mode="In" Type="Int32" />
+            <Parameter Name="accid2" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Int32" />
+            <Parameter Name="ShowMessage" Mode="In" Type="String" />
+            <Parameter Name="transid" Mode="InOut" Type="Int32" />
+            <Parameter Name="flag" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="castleaccount33">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="AccountType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdated" Type="DateTime" Precision="3" />
+          <Property Name="ShowMessage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Custdet_1288" Relationship="DB03TMS24_1819Model.FK__castleacc__Custo__47DBAE45" FromRole="castleaccount33" ToRole="Custdet_1288" />
+          <Property Name="Balance" Type="Int32" />
+          <NavigationProperty Name="transaction33" Relationship="DB03TMS24_1819Model.FK__transacti__Trans__534D60F1" FromRole="castleaccount33" ToRole="transaction33" />
+        </EntityType>
+        <EntityType Name="Custdet_1288">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="custSsnId" Type="Int64" />
+          <Property Name="custName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdated" Type="DateTime" Precision="3" />
+          <Property Name="DisplayMessage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="castleaccount33" Relationship="DB03TMS24_1819Model.FK__castleacc__Custo__47DBAE45" FromRole="Custdet_1288" ToRole="castleaccount33" />
+        </EntityType>
+        <Association Name="FK__castleacc__Custo__47DBAE45">
+          <End Type="DB03TMS24_1819Model.Custdet_1288" Role="Custdet_1288" Multiplicity="0..1" />
+          <End Type="DB03TMS24_1819Model.castleaccount33" Role="castleaccount33" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custdet_1288">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="castleaccount33">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="transaction33">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransAccountId" Type="Int32" />
+          <Property Name="TransDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Transdate" Type="DateTime" Precision="3" />
+          <Property Name="TransAmount" Type="Int64" />
+          <NavigationProperty Name="castleaccount33" Relationship="DB03TMS24_1819Model.FK__transacti__Trans__534D60F1" FromRole="transaction33" ToRole="castleaccount33" />
+        </EntityType>
+        <Association Name="FK__transacti__Trans__534D60F1">
+          <End Type="DB03TMS24_1819Model.castleaccount33" Role="castleaccount33" Multiplicity="0..1" />
+          <End Type="DB03TMS24_1819Model.transaction33" Role="transaction33" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="castleaccount33">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="transaction33">
+              <PropertyRef Name="TransAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB03TMS24_1819ModelStoreContainer" CdmEntityContainer="DB03TMS24_1819Entities">
+          <EntitySetMapping Name="logincastle_3">
+            <EntityTypeMapping TypeName="DB03TMS24_1819Model.logincastle_3">
+              <MappingFragment StoreEntitySet="logincastle_3">
+                <ScalarProperty Name="loginid" ColumnName="loginid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Custdet_1288" FunctionName="DB03TMS24_1819Model.Store.sp_Custdet_1288" />
+          <FunctionImportMapping FunctionImportName="updatecastle" FunctionName="DB03TMS24_1819Model.Store.updatecastle" />
+          <FunctionImportMapping FunctionImportName="update_customer" FunctionName="DB03TMS24_1819Model.Store.update_customer" />
+          <FunctionImportMapping FunctionImportName="delete_castle" FunctionName="DB03TMS24_1819Model.Store.delete_castle" />
+          <FunctionImportMapping FunctionImportName="addaccount" FunctionName="DB03TMS24_1819Model.Store.addaccount" />
+          <EntitySetMapping Name="castleaccount33">
+            <EntityTypeMapping TypeName="DB03TMS24_1819Model.castleaccount33">
+              <MappingFragment StoreEntitySet="castleaccount33">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="ShowMessage" ColumnName="ShowMessage" />
+                <ScalarProperty Name="lastupdated" ColumnName="lastupdated" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="addaccount33" FunctionName="DB03TMS24_1819Model.Store.addaccount33" />
+          <FunctionImportMapping FunctionImportName="deleteaccount33" FunctionName="DB03TMS24_1819Model.Store.deleteaccount33" />
+          <EntitySetMapping Name="Custdet_1288">
+            <EntityTypeMapping TypeName="DB03TMS24_1819Model.Custdet_1288">
+              <MappingFragment StoreEntitySet="Custdet_1288">
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="DisplayMessage" ColumnName="DisplayMessage" />
+                <ScalarProperty Name="lastupdated" ColumnName="lastupdated" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="custName" ColumnName="custName" />
+                <ScalarProperty Name="custSsnId" ColumnName="custSsnId" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="deposit" FunctionName="DB03TMS24_1819Model.Store.deposit" />
+          <FunctionImportMapping FunctionImportName="withdrawl" FunctionName="DB03TMS24_1819Model.Store.withdrawl" />
+          <EntitySetMapping Name="transaction33">
+            <EntityTypeMapping TypeName="DB03TMS24_1819Model.transaction33">
+              <MappingFragment StoreEntitySet="transaction33">
+                <ScalarProperty Name="TransAmount" ColumnName="TransAmount" />
+                <ScalarProperty Name="Transdate" ColumnName="Transdate" />
+                <ScalarProperty Name="TransDescription" ColumnName="TransDescription" />
+                <ScalarProperty Name="TransAccountId" ColumnName="TransAccountId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="transfermoney" FunctionName="DB03TMS24_1819Model.Store.transfermoney" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

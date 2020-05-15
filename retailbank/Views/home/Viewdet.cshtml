@@ -1,0 +1,108 @@
+﻿@model IEnumerable<retailbank.Models.Custdet_1288>
+
+@{
+    ViewBag.Title = "Viewdet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Customer Details</h2>
+
+<p>
+    @Html.ActionLink("Add New", "AddCustDet")
+</p>
+<div style="background-color:cornflowerblue">
+    @if(@TempData["first"] !=null)
+    {
+        @TempData["first"]
+    }
+    @if(@TempData["second"] !=null)
+    {
+        @TempData["second"]
+    }
+    @if (@TempData["not"] != null)
+    {
+        @TempData["not"]
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.custid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custSsnId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastupdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.custid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custSsnId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastupdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "edit_customer", new { id=item.custid }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.custid })
+        </td>
+    </tr>
+}
+
+</table>

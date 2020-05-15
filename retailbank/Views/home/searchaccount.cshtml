@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "searchaccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Account</h2>
+@using (Html.BeginForm())
+{
+
+    <table>
+        <tr>
+            <td>
+                Enter the Account ID
+            </td>
+            <td><input id="Text2" type="text" name="numm" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="submit2" type="submit" value="Search" />
+            </td>
+        </tr>
+    </table>
+}
+
+

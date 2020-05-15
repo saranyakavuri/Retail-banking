@@ -1,0 +1,106 @@
+﻿@model IEnumerable<retailbank.Models.castleaccount33>
+
+@{
+    ViewBag.Title = "ViewAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Account Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddAccount")
+</p>
+<div style="background-color:cornflowerblue">
+    @if (@TempData["acc"] != null)
+    {
+        @TempData["acc"]
+    }
+    @if (@TempData["asc"] != null)
+    {
+        @TempData["asc"]
+    }
+    @if (@TempData["delacc"] != null)
+    {
+        @TempData["delacc"]
+    }
+    @if (@TempData["dep"] != null)
+    {
+        @TempData["dep"]
+    }
+    @if (@TempData["with"] != null)
+    {
+        @TempData["with"]
+    }
+    @if (@TempData["fail"] != null)
+    {
+        @TempData["fail"]
+    }
+    @if (@TempData["notdel"] != null)
+    {
+        @TempData["notdel"]
+    }
+    @if (@TempData["sim"] != null)
+    {
+        @TempData["sim"]
+    }
+    
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountId)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.lastupdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.lastupdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+       
+            @Html.ActionLink("Delete", "DeleteAccount", new { id=item.AccountId })
+        </td>
+    </tr>
+}
+
+</table>

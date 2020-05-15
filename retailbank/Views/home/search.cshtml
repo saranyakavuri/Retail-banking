@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<b><h5 style="font-family:Constantia;font-size:medium">Search</h5></b>
+@using (Html.BeginForm())
+{
+
+    <table>
+        <tr>
+            <td>
+                <b style="font-family:Constantia;font-size:large">  Enter the Customer ID</b>
+            </td>
+            <td>
+            <input id="Text1" type="text" name="num" /></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="font-family:Constantia;font-size:large">
+                <input id="submit1" type="submit" value="Search" /></b>
+            </td>
+        </tr>
+    </table>
+}
+
+

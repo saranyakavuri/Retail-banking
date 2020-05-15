@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB03TMS24_1819Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="castleaccount33">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="AccountType" Type="varchar" MaxLength="20" />
+    <Property Name="lastupdated" Type="datetime" />
+    <Property Name="ShowMessage" Type="varchar" MaxLength="50" />
+    <Property Name="AccountStatus" Type="varchar" MaxLength="20" />
+    <Property Name="Balance" Type="int" />
+  </EntityType>
+  <EntityType Name="Custdet_1288">
+    <Key>
+      <PropertyRef Name="custid" />
+    </Key>
+    <Property Name="custid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custSsnId" Type="bigint" />
+    <Property Name="custName" Type="varchar" MaxLength="20" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Address1" Type="varchar" MaxLength="20" />
+    <Property Name="Address2" Type="varchar" MaxLength="20" />
+    <Property Name="city" Type="varchar" MaxLength="20" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+    <Property Name="lastupdated" Type="datetime" />
+    <Property Name="DisplayMessage" Type="varchar" MaxLength="50" />
+    <Property Name="AccountStatus" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="logincastle_3">
+    <Key>
+      <PropertyRef Name="loginid" />
+    </Key>
+    <Property Name="loginid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+    <Property Name="timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="transaction33">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransAccountId" Type="int" />
+    <Property Name="TransDescription" Type="varchar" MaxLength="50" />
+    <Property Name="Transdate" Type="datetime" />
+    <Property Name="TransAmount" Type="bigint" />
+  </EntityType>
+  <Association Name="FK__castleacc__Custo__47DBAE45">
+    <End Role="Custdet_1288" Type="Self.Custdet_1288" Multiplicity="0..1" />
+    <End Role="castleaccount33" Type="Self.castleaccount33" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Custdet_1288">
+        <PropertyRef Name="custid" />
+      </Principal>
+      <Dependent Role="castleaccount33">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__Trans__534D60F1">
+    <End Role="castleaccount33" Type="Self.castleaccount33" Multiplicity="0..1" />
+    <End Role="transaction33" Type="Self.transaction33" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="castleaccount33">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="transaction33">
+        <PropertyRef Name="TransAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addaccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="AccountType" Type="varchar" Mode="In" />
+    <Parameter Name="DepositAmmount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addaccount33" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="AccountType" Type="varchar" Mode="In" />
+    <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+    <Parameter Name="AccountStatus" Type="varchar" Mode="In" />
+    <Parameter Name="Balance" Type="int" Mode="In" />
+    <Parameter Name="flagg" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="delete_castle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="custid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteaccount33" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+    <Parameter Name="depositamount" Type="int" Mode="In" />
+    <Parameter Name="TransactionId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_Custdet_1288" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="custid" Type="int" Mode="InOut" />
+    <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+    <Parameter Name="custName" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state" Type="varchar" Mode="In" />
+    <Parameter Name="DisplayMessage" Type="varchar" Mode="In" />
+    <Parameter Name="AccountStatus" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="transfermoney" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accid1" Type="int" Mode="In" />
+    <Parameter Name="accid2" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="int" Mode="In" />
+    <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+    <Parameter Name="transid" Type="int" Mode="InOut" />
+    <Parameter Name="flag" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="update_customer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="custid" Type="int" Mode="InOut" />
+    <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+    <Parameter Name="custName" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="updatecastle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="custid" Type="int" Mode="InOut" />
+    <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+    <Parameter Name="custName" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="withdrawl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="ShowMessage" Type="varchar" Mode="In" />
+    <Parameter Name="withdrawlamount" Type="int" Mode="In" />
+    <Parameter Name="flag" Type="int" Mode="InOut" />
+    <Parameter Name="TransactionId" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="DB03TMS24_1819ModelStoreContainer">
+    <EntitySet Name="castleaccount33" EntityType="Self.castleaccount33" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Custdet_1288" EntityType="Self.Custdet_1288" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="logincastle_3" EntityType="Self.logincastle_3" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction33" EntityType="Self.transaction33" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__castleacc__Custo__47DBAE45" Association="Self.FK__castleacc__Custo__47DBAE45">
+      <End Role="Custdet_1288" EntitySet="Custdet_1288" />
+      <End Role="castleaccount33" EntitySet="castleaccount33" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__Trans__534D60F1" Association="Self.FK__transacti__Trans__534D60F1">
+      <End Role="castleaccount33" EntitySet="castleaccount33" />
+      <End Role="transaction33" EntitySet="transaction33" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

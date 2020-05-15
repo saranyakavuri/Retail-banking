@@ -1,0 +1,90 @@
+﻿@model retailbank.Models.castleaccount33
+
+@{
+    ViewBag.Title = "AddAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-family:Constantia">Add Account Details</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+    
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CustomerId,Model.cidlist, htmlAttributes: new { @class = "control-label col-md-2",@name= "CustomerId" })
+                @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AccountType,Model.acctype, htmlAttributes: new { @class = "control-label col-md-2", @name = "AccountType" })
+                @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Amount", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control",@id="id" ,@name= "Balance" } })
+                <label id="label">Please enter a value greater than 0</label>
+                 @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" id="submit"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("View account", "ViewAccount")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#submit").attr("disabled", 1);
+        $("#label").hide();
+        $("#id").keyup(function () {
+
+            if (parseInt($("#id").val()) > 0) {
+                $("#label").hide();
+                $("#submit").removeAttr("disabled");
+
+
+
+            } else {
+
+                $("#submit").attr("disabled", 1);
+                $("#label").css("color", "red").show();
+
+            }
+
+
+
+        });
+
+
+
+
+
+    });
+
+
+</script>

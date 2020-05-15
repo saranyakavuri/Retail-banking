@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB03TMS24_1819ModelStoreContainer" CdmEntityContainer="DB03TMS24_1819Entities">
+    <EntitySetMapping Name="logincastle_3">
+      <EntityTypeMapping TypeName="DB03TMS24_1819Model.logincastle_3">
+        <MappingFragment StoreEntitySet="logincastle_3">
+          <ScalarProperty Name="loginid" ColumnName="loginid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Custdet_1288" FunctionName="DB03TMS24_1819Model.Store.sp_Custdet_1288" />
+    <FunctionImportMapping FunctionImportName="updatecastle" FunctionName="DB03TMS24_1819Model.Store.updatecastle" />
+    <FunctionImportMapping FunctionImportName="update_customer" FunctionName="DB03TMS24_1819Model.Store.update_customer" />
+    <FunctionImportMapping FunctionImportName="delete_castle" FunctionName="DB03TMS24_1819Model.Store.delete_castle" />
+    <FunctionImportMapping FunctionImportName="addaccount" FunctionName="DB03TMS24_1819Model.Store.addaccount" />
+    <EntitySetMapping Name="castleaccount33">
+      <EntityTypeMapping TypeName="DB03TMS24_1819Model.castleaccount33">
+        <MappingFragment StoreEntitySet="castleaccount33">
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="ShowMessage" ColumnName="ShowMessage" />
+          <ScalarProperty Name="lastupdated" ColumnName="lastupdated" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="addaccount33" FunctionName="DB03TMS24_1819Model.Store.addaccount33" />
+    <FunctionImportMapping FunctionImportName="deleteaccount33" FunctionName="DB03TMS24_1819Model.Store.deleteaccount33" />
+    <EntitySetMapping Name="Custdet_1288">
+      <EntityTypeMapping TypeName="DB03TMS24_1819Model.Custdet_1288">
+        <MappingFragment StoreEntitySet="Custdet_1288">
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="DisplayMessage" ColumnName="DisplayMessage" />
+          <ScalarProperty Name="lastupdated" ColumnName="lastupdated" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="custName" ColumnName="custName" />
+          <ScalarProperty Name="custSsnId" ColumnName="custSsnId" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="deposit" FunctionName="DB03TMS24_1819Model.Store.deposit" />
+    <FunctionImportMapping FunctionImportName="withdrawl" FunctionName="DB03TMS24_1819Model.Store.withdrawl" />
+    <EntitySetMapping Name="transaction33">
+      <EntityTypeMapping TypeName="DB03TMS24_1819Model.transaction33">
+        <MappingFragment StoreEntitySet="transaction33">
+          <ScalarProperty Name="TransAmount" ColumnName="TransAmount" />
+          <ScalarProperty Name="Transdate" ColumnName="Transdate" />
+          <ScalarProperty Name="TransDescription" ColumnName="TransDescription" />
+          <ScalarProperty Name="TransAccountId" ColumnName="TransAccountId" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="transfermoney" FunctionName="DB03TMS24_1819Model.Store.transfermoney" />
+  </EntityContainerMapping>
+</Mapping>

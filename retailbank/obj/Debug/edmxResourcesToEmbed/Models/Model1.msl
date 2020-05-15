@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB03TMS24_1819ModelStoreContainer" CdmEntityContainer="RetailBankingEntities">
+    <EntitySetMapping Name="Custdet_1288">
+      <EntityTypeMapping TypeName="DB03TMS24_1819Model.Custdet_1288">
+        <MappingFragment StoreEntitySet="Custdet_1288">
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="custSsnId" ColumnName="custSsnId" />
+          <ScalarProperty Name="custName" ColumnName="custName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Custdet_1288" FunctionName="DB03TMS24_1819Model.Store.sp_Custdet_1288" />
+  </EntityContainerMapping>
+</Mapping>

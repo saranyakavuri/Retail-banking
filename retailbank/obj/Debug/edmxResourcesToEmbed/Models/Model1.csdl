@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB03TMS24_1819Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Custdet_1288">
+    <Key>
+      <PropertyRef Name="custid" />
+    </Key>
+    <Property Name="custid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custSsnId" Type="Int64" />
+    <Property Name="custName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Address1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="RetailBankingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Custdet_1288" EntityType="Self.Custdet_1288" />
+    <FunctionImport Name="sp_Custdet_1288">
+      <Parameter Name="custid" Mode="InOut" Type="Int32" />
+      <Parameter Name="custSsnId" Mode="In" Type="Int64" />
+      <Parameter Name="custName" Mode="In" Type="String" />
+      <Parameter Name="Age" Mode="In" Type="Int32" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

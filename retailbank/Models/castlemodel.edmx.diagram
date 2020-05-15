@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bec3c82434a641b5b55d48f7cdfe4cd3" Name="Diagram1">
+        <EntityTypeShape EntityType="DB03TMS24_1819Model.logincastle_3" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB03TMS24_1819Model.castleaccount33" Width="1.5" PointX="5.625" PointY="4.125" />
+        <EntityTypeShape EntityType="DB03TMS24_1819Model.Custdet_1288" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="DB03TMS24_1819Model.FK__castleacc__Custo__47DBAE45" />
+        <EntityTypeShape EntityType="DB03TMS24_1819Model.transaction33" Width="1.5" PointX="7.875" PointY="4.375" />
+        <AssociationConnector Association="DB03TMS24_1819Model.FK__transacti__Trans__534D60F1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

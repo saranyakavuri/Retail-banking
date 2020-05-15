@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/View.cshtml";
+}
+
+<body style="background-image :url(https://coubsecure-s.akamaihd.net/get/b118/p/coub/simple/cw_timeline_pic/e8fb15045b6/2f19bb47d5c7ef9069e95/big_1475596180_image.jpg)">
+    <div class="container" style="padding-top:20%;">
+        <div class="jumbotron" style="opacity:0.5;width:40%;margin-left:30%">
+            <p>
+               Welcome to the Castlebuilders bank.We help you create the castles you have always dreamt for.
+                We provide you with the best financials advices for a  safe and better future.
+                Login to have a look at the facilities we offer...
+            </p>
+        </div>
+        @*<button style="width:30%;margin-left:35%" class="btn btn-primary" name="login" id="b">Log in</button>*@
+        <div style="width:30%;margin-left:47%">  @Html.ActionLink("LOGIN", "login", "home", new { area = "" }, new { @class = "navbar-brand", @style = "color:white" })
+    </div> 
+    </div>
+</body>

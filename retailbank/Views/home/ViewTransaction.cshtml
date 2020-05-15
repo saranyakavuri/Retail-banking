@@ -1,0 +1,78 @@
+﻿@model IEnumerable<retailbank.Models.transaction33>
+
+@{
+    ViewBag.Title = "ViewTransaction";
+    Layout = "~/Views/Shared/cust_layout.cshtml";
+}
+
+<h2>ViewTransaction</h2>
+
+
+<div style="background-color:cornflowerblue">
+  
+    @if (@TempData["dep"] != null)
+    {
+        @TempData["dep"]
+    }
+    @if (@TempData["with"] != null)
+    {
+        @TempData["with"]
+    }
+    @if (@TempData["fail"] != null)
+    {
+        @TempData["fail"]
+    }
+    @if (@TempData["fall"] != null)
+    {
+        @TempData["fall"]
+    }
+    @if (@TempData["in"] != null)
+    {
+        @TempData["in"]
+    }
+</div>
+<b>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransAccountId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransAccountId)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</b>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "signout";
+    Layout = "~/Views/Shared/View.cshtml";
+}
+<script>setTimeout(function(){window.location.href="/"},5000);</script>
+
+<h2  style="text-align:center;padding-top:15% ;color:#ccffff;text-align:center ">
+                   THANKYOU FOR USING OUR BANK
+    </h2>
+<h5 style="text-align:center;padding-top:1% ;color:#ccffff;text-align:center ">
+   You will be redirected to the main page within 5 seconds
+</h5>
+<h5 style="text-align:left;color:white">
+    @Html.ActionLink("Back to main page", "index")
+    </h5>

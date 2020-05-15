@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB03TMS24_1819Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Custdet_1288">
+    <Key>
+      <PropertyRef Name="custid" />
+    </Key>
+    <Property Name="custid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custSsnId" Type="bigint" />
+    <Property Name="custName" Type="varchar" MaxLength="20" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Address1" Type="varchar" MaxLength="20" />
+    <Property Name="Address2" Type="varchar" MaxLength="20" />
+    <Property Name="city" Type="varchar" MaxLength="20" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="sp_Custdet_1288" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="custid" Type="int" Mode="InOut" />
+    <Parameter Name="custSsnId" Type="bigint" Mode="In" />
+    <Parameter Name="custName" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DB03TMS24_1819ModelStoreContainer">
+    <EntitySet Name="Custdet_1288" EntityType="Self.Custdet_1288" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
